@@ -1,0 +1,46 @@
+clusterServersConfig:
+     #Connection Idle Timeout If the number of connections in the current connection pool exceeds the minimum number of idle connections and the connection idle time exceeds this value, then these connections are automatically closed and removed from the connection pool. The time unit is milliseconds.
+  idleConnectionTimeout: 10000
+  pingTimeout: 1000
+     # Connection timed out 
+  connectTimeout: 10000
+     #Command waiting timeout
+  timeout: 3000
+     #Command failed retry times
+  retryAttempts: 3
+     #Command retry sending interval
+  retryInterval: 1500
+     # Reconnect time interval
+  reconnectionTimeout: 3000
+  # failedAttempts
+  failedAttempts: 3
+     # 
+  password: null
+     # Single connection maximum number of subscriptions
+  subscriptionsPerConnection: 5
+     #client name
+  clientName: null
+     #Load balancing algorithm class selection Default polling scheduling algorithm RoundRobinLoadBalancer
+  loadBalancer: !<org.redisson.connection.balancer.RoundRobinLoadBalancer> {}
+  slaveSubscriptionConnectionMinimumIdleSize: 1
+  slaveSubscriptionConnectionPoolSize: 50
+     # slave node minimum number of idle connections
+  slaveConnectionMinimumIdleSize: 32
+     # slave node connection pool size
+  slaveConnectionPoolSize: 64
+     #Primary node minimum number of idle connections
+  masterConnectionMinimumIdleSize: 32
+     #Primary node connection pool size
+  masterConnectionPoolSize: 64
+     # only read from the service node
+  readMode: "SLAVE"
+     # node 
+  nodeAddresses:
+  - "redis://192.168.56.128:7000"
+  - "redis://192.168.56.128:7001"
+  - "redis://192.168.56.128:7002"
+     #  interval time unit milliseconds
+  scanInterval: 1000
+threads: 0
+nettyThreads: 0
+codec: !<org.redisson.codec.JsonJacksonCodec> {}
